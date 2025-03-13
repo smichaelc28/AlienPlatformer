@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public void StopGame()
     {
         gameover = true;
+        Invoke("LoadMainMenu", 3f);
         gameObject.SetActive(false);
     }
     
@@ -56,6 +58,12 @@ public class PlayerManager : MonoBehaviour
         {
             youWinNotification.SetActive(true);
             StopGame();
+            Invoke("LoadMainMenu", 3f);
         }
     }
+    void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
+
